@@ -6,7 +6,7 @@ React 是一个用于构筑用户界面（User Interface）的 **JavaScript 库
 
 React 应用的核心都是 **组件 （components）**，组件本质是 UI 的一个片段，当使用 React 来编写应用时，我们会大量编写单独的 、可重复使用的组件，然后把它们组合成复杂的 UI。 每一个 React 应用至少有一个**根组件**，根组件包含了其它**子组件**，所以 React 应用实质上也是一个**组件树**。
 
-![React Component Tree](img/React Component Tree.png)
+![React Component Tree](img/React_Component_Tree.png)
 
 ### React 的 Virtual DOM
 
@@ -24,7 +24,7 @@ class NavBar {
 
 当修改了一个组件的 `state` 就会得到一个新的 React 元素，React 会对比新得到的元素与旧元素，包括它们的 `children` ，确认出改变的地方之后会将这些改变更新到 Real DOM，使得 Real DOM 和 Virtual DOM 同步。
 
-![React Virtual DOM](img/React Virtual DOM.png)
+![React Virtual DOM](img/React_Virtual_DOM.png)
 
 因此只需要简单地修改组件的 `state` ，React 会自动更新 DOM 去匹配 `state` ，这意味着我们不再以传统的开发方式（比如使用 jQuery 操作 DOM 和绑定事件）来开发 React 应用。
 
@@ -136,7 +136,7 @@ var element = React.createElement("h1", null, "Hello World!");
 
 在我们的组件中使用 JSX，通过 babel 把它们转换成 `React.createElement` 会得到 React 元素，通过 JSX 来编写 UI 比直接用 React 来写要**简洁易读**很多。
 
-![React JSX To Real DOM](img/React JSX To Real DOM.png)
+![React JSX To Real DOM](img/React_JSX_To_Real_DOM.png)
 
 ### 组件编写
 
