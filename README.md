@@ -116,7 +116,7 @@ export default App;
 
 ```
 
-可以看到，根组件其实就是一个 ES6 的 `class App` ，它继承了React 的 Component，然后在这个 App 类中，有一个 `render` 方法返回了一段标记，在以前我们没见过在 JavaScript 中返回这种形式的标记，这既不是 string 也是不是HTML，这就是我们所说的 **JSX**。在这里的 JSX 描述了 UI 的样子，就是我们启动之后看到的界面。
+可以看到，根组件其实就是一个 ES6 的 *App* `class` ，它继承了React 的 Component，然后在这个 App 类中，有一个 `render` 方法返回了一段标记，在以前我们没见过在 JavaScript 中返回这种形式的标记，这既不是 string 也是不是HTML，这就是我们所说的 **JSX**。在这里的 JSX 描述了 UI 的样子，就是我们启动之后看到的界面。
 
 ### React 的 JSX
 
@@ -134,63 +134,31 @@ const element = <h1>Hello World!</h1>
 var element = React.createElement("h1", null, "Hello World!");
 ```
 
-在我们的组件中使用 JSX，通过 babel 把它们转换成 `React.createElement` 会得到 React 元素，通过 JSX 来编写 UI 比直接用 React 来写要**简洁易读**很多。
+在组件中使用 JSX，通过 babel 把它们转换成 `React.createElement` 会得到 React 元素，通过 JSX 来编写 UI 比直接用 React 来写要**简洁易读**很多。
 
 ![React JSX To Real DOM](img/React_JSX_To_Real_DOM.png)
 
-### 组件编写
+### React 的类组件和函数组件
 
-#### 创建组件
+#### 函数组件（Functional component）
 
-##### 函数组件
-
-可以使用 JavaScript 函数创建组件，接受 props 对象作为第一个参数并返回 React 元素： 
+可以使用 JavaScript 函数创建组件，接受 props 对象作为第一个参数并返回 JSX： 
 
 ```jsx
-// src/App.js
-import React, { Component } from 'react';
-import './App.css';
+
+import React from 'react';
+
 // Greeting 组件
 function Greeting({ message }) {
   return <h1>{`Hello, ${message}`}</h1>
 }
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Greeting message="World"/>  
-      </div>
-    );
-  }
-}
-
-export default App;
 ```
 
-##### 类组件 
+#### 类组件（Class component）
 
-使用 ES6 类来定义组件，这就和App根组件是一样的方式： 
+使用 ES6 类来定义组件，假如需要使用 React 组件的生命周期方法、状态等，就可以使用类定义组件。
 
-```jsx
-// src/App.js
-import React, { Component } from 'react';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Greeting message="World"/>  
-      </div>
-    );
-  }
-}
-
-export default App;
-```
-
-假如需要使用React组件的生命周期方法、状态等，我们就使用类定义组件，新建一个components目录，我们可以将组件都放在这个目录下面，我们一般新建 jsx 为后缀的文件，可以获得更好的代码提示：
+新建一个 components 目录，可以将组件都放在这个目录下面，我们一般新建 `.jsx` 为后缀的文件，可以获得更好的代码提示：
 
 ```jsx
 // src/components/GreetingComponent.jsx
@@ -224,7 +192,7 @@ class App extends Component {
 export default App;
 ```
 
-**注意：上面的代码中，我们在return后面加了( )来包裹JSX，是因为return后面没有内容直接换行的话，JavaScript会在后面补一个“;”，所以当我们的元素需要在return之后换行写的话，记得要用()包裹起来。**
+**注意：上面的代码中，我们在 return 后面加了 ( ) 来包裹 JSX，是因为 return 后面没有内容直接换行的话，JavaScript 会在后面补一个“;”，所以当我们的元素需要在 return 之后换行写的话，记得要用 () 包裹起来。**
 
 ### Props 
 
@@ -327,23 +295,23 @@ export default class GreetingComponent extends React.Component {
 
 **state（状态）是私有的，在组件外无法访问。** 
 
-### State和props的异同
+### State 和 props 的异同
 
 相同点
 
-- State和props都是普通的 JavaScript 对象
-- State和props都能影响渲染
-- State和props都能从父组件接收初始值
-- State和props都能在子组件设置默认值
-- State和props都能作为子组件的初始值
+- State 和 props 都是普通的 JavaScript 对象
+- State 和 props 都能影响渲染
+- State 和 props 都能从父组件接收初始值
+- State 和 props 都能在子组件设置默认值
+- State 和 props 都能作为子组件的初始值
 
 不同点
 
-- State用于组件内部对自己进行进行管理，props用于传递值到组件
-- State不能在父组件改变值，props能在父组件改变值
-- State能在组件内部改变，props不能在组件内部改变
+- State 用于组件内部对自己进行进行管理，props 用于传递值到组件
+- State 不能在父组件改变值，props 能在父组件改变值
+- State 能在组件内部改变，props 不能在组件内部改变
 
-### 更新state
+### 更新 state
 
 直接更新state状态是不能重新渲染的，需要调用 `setState()` 方法。当状态更改时，组件将会重新渲染。
 
